@@ -17,3 +17,10 @@ func TestParentEnv(t *testing.T) {
 	assert.NoError(t, err)
 	assert.NotEmpty(t, output[0])
 }
+
+func TestMakeWorkingDir(t *testing.T) {
+	t.Parallel()
+	output, err := New().WithWorkingDir("/tmp/foo").Run("pwd")
+	assert.NoError(t, err)
+	assert.Equal(t, output[0], "/tmp/foo")
+}

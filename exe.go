@@ -14,6 +14,11 @@ func New() *Exe {
 	return &Exe{}
 }
 
+func (exe Exe) WithWorkingDir(workingDir string) Exe {
+	exe.WorkingDir = workingDir
+	return exe
+}
+
 func (exe Exe) Run(command string) ([]string, error) {
 	commandSegments := strings.Split(command, " ")
 	cmd := exec.Command(commandSegments[0], commandSegments[1:]...)
